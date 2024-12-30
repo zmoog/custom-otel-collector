@@ -1,0 +1,24 @@
+# builder-config.yaml
+dist:
+  name: otelcol-dev
+  description: OTel Collector distribution for Azure Streamer
+  output_path: ./otelcol-dev
+
+exporters:
+  - gomod:
+      # NOTE: Prior to v0.86.0 use the `loggingexporter` instead of `debugexporter`.
+      go.opentelemetry.io/collector/exporter/debugexporter v0.116.0
+  - gomod:
+      github.com/open-telemetry/opentelemetry-collector-contrib/exporter/elasticsearchexporter v0.116.0
+
+processors:
+  - gomod:
+      go.opentelemetry.io/collector/processor/batchprocessor v0.116.0
+
+receivers:
+  - gomod:
+      github.com/open-telemetry/opentelemetry-collector-contrib/receiver/azureeventhubreceiver v0.116.0
+
+extensions:
+  - gomod:
+      github.com/open-telemetry/opentelemetry-collector-contrib/extension/basicauthextension v0.116.0
