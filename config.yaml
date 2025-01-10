@@ -1,9 +1,16 @@
 # config.yaml
 receivers:
   # https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/receiver/azureeventhubreceiver
-  azureeventhub:
+  #azureeventhub:
     # the only required setting is the connection string
-    connection: ${env:EVENTHUB_CONNECTION_STRING}
+    # connection: ${env:EVENTHUB_CONNECTION_STRING}
+  zcs: # this line represents the ID of your receiver
+    interval: ${env:ZCS_INTERVAL:-1m}
+    auth:
+      client_id: ${env:ZCS_CLIENT_ID}
+      auth_key: ${env:ZCS_AUTH_KEY}
+    thing_ids:
+      - ${env:ZCS_THING_KEY}    
 processors:
   batch:
 
